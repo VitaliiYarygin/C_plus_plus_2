@@ -1,25 +1,61 @@
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
+int main() {
+ int matrix[11][11] = {};
+ int Counter = 0;
+ srand(time(NULL));
+  for(int i=0; i<11; i++){
+  for(int j=0; j<11; j++){
+   *(*(matrix + i) + j) = rand()%100+1;
+ }
+}
+  for(int i=0; i<11; i++){
+   for(int j=0; j<11; j++){
+    cout.width(3);
+    cout << matrix[i][j];
+    if (j==10){
+     cout << "\n";
+  }
+ }
+}
 
-int main()
-{
+cout << "\n";
 
-	int matrix[10][10] = { };
-	for (int i = 0; i < 10; i++)
-	{
-		for (int j = 0; j < 10; j++)
-		{
-			*(*(matrix + i) + j) = (i + 1) * (j + 1);
-		}
-	}
-	for (int i = 0; i < 10; i++) {
-		for (int j = 0; j < 10; j++) {
-			cout.width(4);
-			cout << matrix[i][j];
-		}
-		cout << endl;
-	}
+cout << "Elements of the main diagonal:\n";
+ for(int i=0; i<11; i++){
+  cout << *(*(matrix + i) + i) << ", ";
+ }
+ 
+ cout << "\n";
 
-	return 0;
+ cout << "Elements of the side diagonal:\n";
+ for(int i=10, j=0; i>=0; i--){
+  cout << *(*(matrix + i) + j) << ", ";
+  j++;
+  }
+  
+ cout << "\n";
+
+ cout << "Number of even numbers: ";
+ for(int i=0; i<11; i++){
+  for(int j=0; j<11; j++){
+   if(*(*(matrix + i) + j) % 2 == 0){
+    Counter++;
+  }
+ }
+}
+ cout << Counter << "\n";
+ Counter = 0;
+ 
+ cout << "Number of odd numbers: ";
+ for(int i=0; i<11; i++){
+  for(int j=0; j<11; j++){
+   if(*(*(matrix + i) + j) % 2 == 1){
+    Counter++;
+   }
+  }
+ }
+ cout << Counter << "\n";
 }
